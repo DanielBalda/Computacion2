@@ -1,6 +1,4 @@
 import argparse
-from ast import arg
-from importlib.resources import path
 import os
 
 
