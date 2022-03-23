@@ -1,6 +1,4 @@
 import argparse
-from ast import arg
-from importlib.resources import path
 import os
 
 
@@ -9,8 +7,8 @@ class InvalidFileName(Exception):
 
 parser = argparse.ArgumentParser(description="Copia de un archivos Origen a uno Destino")
 
-parser.add_argument("-i", "--fileA", type=str, required=True, help="text file")
-parser.add_argument("-o", "--fileB", type=str, required=True, help="text file")
+parser.add_argument("-i", "--origen", type=str, required=True, help="Archivo Origen")
+parser.add_argument("-o", "--destino", type=str, required=True, help="Archivo Destino")
 args = parser.parse_args()
 
 try:

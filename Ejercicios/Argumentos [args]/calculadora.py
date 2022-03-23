@@ -30,10 +30,15 @@ def getArg(opt):
 
 
 def main():
-    opt, _ = getopt.getopt(sys.argv[1:], 'o:n:m:')
-    if opt == []:
-        return print("Ingrese los argumentos necesarios")
-    getArg(opt)
+    try:
+        opt, _ = getopt.getopt(sys.argv[1:], 'o:n:m:')
+        if opt == [] or len(opt) < 3:
+            return print("Ingrese los argumentos necesarios")
+        getArg(opt)
+    except getopt.GetoptError:
+        print("Ingrese los argumentos necesarios")
+        exit()
 
 
-main()
+if __name__=="__main__":
+    main()
