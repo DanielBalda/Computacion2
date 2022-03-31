@@ -1,10 +1,11 @@
 import argparse as ap
+from ast import arg
 import os
-import time
+from tabnanny import verbose
 
-def proceso_hijo():
+def proceso_hijo(pid):
     sumatoria = 0
-    for number in range(os.getpid()):
+    for number in range(pid):
         if number%2 == 0:
             sumatoria += number
     return sumatoria
@@ -23,9 +24,14 @@ def main():
     args = parser.parse_args()
     for _ in range(args.numeros):
         if(os.fork() == 0):
-            print("{} - {}: {}".format(os.getpid(),os.getppid(), proceso_hijo()))
+            if (args.verbose):
+                pid = os.getpid()
+                print(f"Starting process {pid}")
+            print(f"{pid} - {os.getppid()}: {proceso_hijo(pid)}")
             os._exit(0)
-        os.wait() 
+        pidChild, _ = os.wait()
+        if (pidChild and args.verbose):
+            print(f"Ending process {pidChild}")
 
 if __name__=="__main__":
     main()
