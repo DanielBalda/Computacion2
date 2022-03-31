@@ -1,7 +1,5 @@
 import argparse as ap
-from ast import arg
 import os
-from tabnanny import verbose
 
 def proceso_hijo(pid):
     sumatoria = 0
