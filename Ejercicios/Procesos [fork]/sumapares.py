@@ -22,8 +22,8 @@ def main():
     args = parser.parse_args()
     for _ in range(args.numeros):
         if(os.fork() == 0):
+            pid = os.getpid()
             if (args.verbose):
-                pid = os.getpid()
                 print(f"Starting process {pid}")
             print(f"{pid} - {os.getppid()}: {proceso_hijo(pid)}")
             os._exit(0)
