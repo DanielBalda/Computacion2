@@ -36,7 +36,7 @@ for _ in range(args.number):
             os.fsync(outputFile)
             time.sleep(1)
         os._exit(0)
-    os.wait()
+os.wait()
 os.close(outputFile)
 
 readFile = os.open(args.file, os.O_RDONLY)
