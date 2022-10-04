@@ -6,7 +6,12 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
     def handle(self):
         while True:
             self.data = self.request.recv(1024).strip()
-            if( not self.data):
+            if not self.data:
+                server.shutdown()
+                server.close_request()
+                exit()
+            if self.data.decode() == "stop server":
+                print("ACA SE DEBERIA CERRRAR EL SERVER")
                 server.shutdown()
                 server.close_request()
                 exit()

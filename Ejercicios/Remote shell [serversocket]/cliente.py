@@ -11,12 +11,17 @@ def client(h,p):
         sys.exit()
     
     host, port = h, p
-    print("Connecting..")
+    print("Conectando...")
     s.connect((host,port))
     while True:
         msg = input("Ingrese comando a ejecutar:")
         if msg == "exit server":
             print("Conexion finalizada...")
+            s.close()
+            exit()
+        if msg == "stop server":
+            print("Conexion finalizada...")
+            s.send('stop server'.encode())
             s.close()
             exit()
         s.send(msg.encode())
